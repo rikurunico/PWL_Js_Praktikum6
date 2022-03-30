@@ -22,7 +22,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <form action="{{ url('/data/search') }}" method="get">
+            <form action="{{ url('search') }}" method="get">
                 <div class="form-group row">
                     <div class="col-md-6">
                         <input value="{{ request('search') }}" type="text" name="search" class="form-control" placeholder="Search">
@@ -34,6 +34,7 @@
             </form>
         </div>
     </div>
+
 
 <table class="table table-bordered">
     <tr>
@@ -69,6 +70,6 @@
     @endforeach
     </table>
     <div class="d-flex">
-        {!! $mahasiswa->links() !!}
+        {{ $mahasiswa->links() }}
     </div>
 @endsection
