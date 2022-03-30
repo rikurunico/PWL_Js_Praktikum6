@@ -9,11 +9,14 @@ class Mahasiswa extends Model
 {
     protected $table='mahasiswa';
     protected $primaryKey='nim';
-
+    protected $dates = ['tanggal_lahir'];
     protected $fillable = [
         'Nim', 
         'Nama', 
         'Kelas', 
         'Jurusan',
+        'Email',
+        'Alamat',
+        'Tanggal_Lahir',
     ];
 }
