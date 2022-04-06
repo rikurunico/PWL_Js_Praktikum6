@@ -19,4 +19,8 @@ class Mahasiswa extends Model
         'Alamat',
         'Tanggal_Lahir',
     ];
+
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
+    }
 }

@@ -1,6 +1,7 @@
 @extends('mahasiswa.layout')
 
 @section('content')
+
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left mt-2">
@@ -35,7 +36,6 @@
         </div>
     </div>
 
-
 <table class="table table-bordered">
     <tr>
         <th>Nim</th>
@@ -52,7 +52,7 @@
     <tr>
         <td>{{ $mhs ->nim }}</td>
         <td>{{ $mhs ->nama }}</td>
-        <td>{{ $mhs ->kelas }}</td>
+        <td>{{ $mhs ->kelas->nama_kelas }}</td>
         <td>{{ $mhs ->jurusan }}</td>
         <td>{{ $mhs ->email }}</td>
         <td>{{ $mhs ->alamat }}</td>

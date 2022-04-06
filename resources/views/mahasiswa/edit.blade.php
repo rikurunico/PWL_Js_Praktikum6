@@ -1,6 +1,5 @@
 @extends('mahasiswa.layout')
 @section('content')
-
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center">
         <div class="card" style="width: 24rem;">
@@ -31,7 +30,11 @@
                 </div>
                 <div class="form-group">
                     <label for="Kelas">Kelas</label>
-                    <input type="text" name="Kelas" class="form-control" id="Kelas" value="{{ $Mahasiswa->kelas }}" aria-describedby="Kelas">
+                    <select name="Kelas" class="form-control">
+                        @foreach ($Kelas as $kls )
+                            <option value="{{ $kls ->id }}" {{ $Mahasiswa->kelas_id == $kls->id ? 'selected' : '' }}>{{ $kls->nama_kelas }}</option>    
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="Jurusan">Jurusan</label>
