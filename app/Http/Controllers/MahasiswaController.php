@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use App\Models\Kelas;
+use App\Models\Mahasiswa_Matakuliah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class MahasiswaController extends Controller
@@ -103,5 +104,12 @@ class MahasiswaController extends Controller
             Mahasiswa::find($Nim)->delete();
             return redirect()->route('mahasiswa.index')
                 -> with('success', 'Mahasiswa Berhasil Dihapus');
+        }
+    public function nilai($id)
+        {
+            //menampilkan data dari relasi many to many
+            $daftar = Mahasiswa_MataKuliah::with("matakuliah")->where("mahasiswa_id", $id)->get();
+            $daftar->mahasiswa = Mahasiswa::with('kelas')->where('id', $id)->first();
+            return view('mahasiswa.nilai', compact('daftar'));
         }
 };
