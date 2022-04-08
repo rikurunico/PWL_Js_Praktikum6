@@ -23,10 +23,10 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <form action="{{ url('search') }}" method="get">
+            <form action="{{ url('/search') }}" method="get">
                 <div class="form-group row">
                     <div class="col-md-6">
-                        <input value="{{ request('search') }}" type="text" name="search" class="form-control" placeholder="Search">
+                        <input value="{{ request('search') }}" type="text" name="cari" class="form-control" placeholder="Search">
                     </div>
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-primary">Search</button>

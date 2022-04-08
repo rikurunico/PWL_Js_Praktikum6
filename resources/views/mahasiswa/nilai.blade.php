@@ -11,7 +11,6 @@
         </div>
         <div class="row mb-2">
             <ul class="" style="list-style-type: none;">
-                <!-- Mengambil data yang di dalam array -->
                 <li class=""><b>Nama: </b>{{$daftar->mahasiswa->nama}}</li>
                 <li class=""><b>Nim: </b>{{$daftar->mahasiswa->nim}}</li>
                 <li class=""><b>Kelas: </b>{{$daftar->mahasiswa->kelas->nama_kelas}}</li>
