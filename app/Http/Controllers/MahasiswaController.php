@@ -5,6 +5,7 @@ use App\Models\Kelas;
 use App\Models\Mahasiswa_Matakuliah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 class MahasiswaController extends Controller
 {
     /**
@@ -121,5 +122,13 @@ class MahasiswaController extends Controller
             $daftar = Mahasiswa_MataKuliah::with("matakuliah")->where("mahasiswa_id", $id)->get();
             $daftar->mahasiswa = Mahasiswa::with('kelas')->where('id', $id)->first();
             return view('mahasiswa.nilai', compact('daftar'));
+        }
+
+        public function cetak_pdf($id)
+        {
+            $daftar = Mahasiswa_MataKuliah::where("mahasiswa_id", $id)->get();
+            $daftar->mahasiswa = Mahasiswa::with('kelas')->where('id', $id)->first();
+            $pdf = PDF::loadview('mahasiswa.print', compact('daftar'));
+            return $pdf->stream();
         }
 };

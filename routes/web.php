@@ -29,3 +29,5 @@ Route::get('search', [SearchController::class, 'search']);
 Route::resource('articles', ArticleController::class);
 
 Route::get('/article/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
+
+Route::get('/mahasiswa/cetak_pdf/{id}', [MahasiswaController::class, 'cetak_pdf']);

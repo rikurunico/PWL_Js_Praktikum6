@@ -46,5 +46,7 @@
             </tbody>
         </table>
     </div>
+<div class="d-flex justify-content-center my-5">
+    <a href="{{url('/mahasiswa/cetak_pdf/'. $d->id)}}" class="btn btn-primary">Export to PDF</a>
 </div>
 @endsection
