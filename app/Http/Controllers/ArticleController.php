@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
-use PDF;
+use Illuminate\Support\Facades\Storage;
+use PDF; //Praktikum 3 JS 10 (Langkah 5)
 
 class ArticleController extends Controller
 {
@@ -25,6 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        // Praktikum 1 JS 10 (Langkah 9)
         return view('articles.create');
     }
 
@@ -36,16 +38,17 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request -> file('image')) {
-            $image_name = $request -> file('image') -> store('images', 'public');
+        // Praktikum 1 JS 10 (Langkah 8)
+        if ($request->file('featured_image')) {
+            $image_name = $request->file('featured_image')->store('images', 'public');
         }
 
         Article::create([
-            'title' => $request -> title,
-            'content' => $request -> content,
-            'image' => $image_name,
+            'title' => $request->title,
+            'content' => $request->content,
+            'featured_image' => $image_name
         ]);
-        return 'Artikel Berhasil Di Simpan';
+        return 'Artikel berhasil disimpan';
     }
 
     /**
@@ -67,8 +70,10 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
+        // Praktikum 2 JS 10 (Langkah 3)
         $article = Article::find($id);
-        return view('articles.edit',['article' => $article]);
+
+        return view('articles.edit', ['article' => $article]);
     }
 
     /**
@@ -80,17 +85,20 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article  = Article::find($id);
-        $article -> title = $request -> title;
-        $article -> content = $request -> content;
+        // Praktikum 2 JS 10 (Langkah 2)
+        $article = Article::find($id);
 
-        if ($article -> featured_image && file_exists(storage_path('app/public/' . $article -> featured_image))) {
-            \Storage::delete('public/' . $article -> featured_image);
+        $article->title = $request->title;
+        $article->content = $request->content;
+
+        if ($article->featured_image && file_exists(storage_path('app/public/' . $article->featured_image))) {
+            Storage::delete('public/' . $article->featured_image);
         }
-        $image_name = $request -> file('image') -> store('images', 'public');
-        $article -> featured_image = $image_name;
-        $article -> save();
-        return 'Artikel Berhasil Di Ubah';
+        $image_name = $request->file('featured_image')->store('images', 'public');
+        $article->featured_image = $image_name;
+
+        $article->save();
+        return 'Artikel berhasil diubah';
     }
 
     /**

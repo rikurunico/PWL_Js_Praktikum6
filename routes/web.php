@@ -24,7 +24,7 @@ Route::resource('mahasiswa', MahasiswaController::class);
 
 Route::get('nilai/{id}', [MahasiswaController::class, 'nilai'])->name('nilai');
 
-Route::get('index/search', [SearchController::class, 'search']);
+Route::get('search', [SearchController::class, 'search']);
 
 Route::resource('articles', ArticleController::class);
 
