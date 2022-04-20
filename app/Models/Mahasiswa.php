@@ -13,7 +13,8 @@ class Mahasiswa extends Model
     protected $dates = ['tanggal_lahir'];
     protected $fillable = [
         'Nim', 
-        'Nama', 
+        'Nama',
+        'Foto_mahasiswa',
         'Kelas', 
         'Jurusan',
         'Email',

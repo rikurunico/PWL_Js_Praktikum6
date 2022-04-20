@@ -41,14 +41,20 @@ class MahasiswaController extends Controller
             'Tanggal_Lahir' => 'required',
             ]);
 
+            if ($request -> file('Foto_mahasiswa')){
+                $foto = $request->file('Foto_mahasiswa')->store('images', 'public');
+            }
             $mahasiswa = new Mahasiswa;
             $mahasiswa->Nim = $request->get('Nim');
             $mahasiswa->Nama = $request->get('Nama');
+            $mahasiswa->Foto_mahasiswa = $foto;
             $mahasiswa->Jurusan = $request->get('Jurusan');
             $mahasiswa->Email = $request->get('Email');
             $mahasiswa->Alamat = $request->get('Alamat');
             $mahasiswa->Tanggal_Lahir = $request->get('Tanggal_Lahir');
             $mahasiswa->Kelas_id = $request->get('Kelas');
+
+            
             $mahasiswa->save();
 
             return redirect()->route('mahasiswa.index')
@@ -80,9 +86,13 @@ class MahasiswaController extends Controller
             'Tanggal_Lahir' => 'required',
             ]);
 
+            if ($request -> file('Foto_mahasiswa')){
+                $foto = $request->file('Foto_mahasiswa')->store('images', 'public');
+            }
             $mahasiswa = Mahasiswa::with('kelas')->where('nim', $Nim)->first();
             $mahasiswa->Nim = $request->get('Nim');
             $mahasiswa->Nama = $request->get('Nama');
+            $mahasiswa->Foto_mahasiswa = $foto;
             $mahasiswa->Jurusan = $request->get('Jurusan');
             $mahasiswa->Email = $request->get('Email');
             $mahasiswa->Alamat = $request->get('Alamat');

@@ -15,22 +15,26 @@ class MataKuliahSeeder extends Seeder
     public function run()
     {
         $matkul = [
-            [   'nama_matkul' => 'Pemrograman Berbasis Objek',
+            [
+                'nama_matkul' => 'Pemrograman Berbasis Objek',
                 'sks' => 3,
                 'jam' => 6,
                 'semester' => 4,
             ],
-            [   'nama_matkul' => 'Pemrograman Pemrograman Web Lanjut',
+            [
+                'nama_matkul' => 'Pemrograman Pemrograman Web Lanjut',
                 'sks' => 3,
                 'jam' => 6,
                 'semester' => 4,
             ],
-            [   'nama_matkul' => 'Basis Data Lanjut',
+            [
+                'nama_matkul' => 'Basis Data Lanjut',
                 'sks' => 3,
                 'jam' => 6,
                 'semester' => 4,
             ],
-            [   'nama_matkul' => 'Praktikum Basis Data Lanjut',
+            [
+                'nama_matkul' => 'Praktikum Basis Data Lanjut',
                 'sks' => 3,
                 'jam' => 6,
                 'semester' => 4,
@@ -38,6 +42,5 @@ class MataKuliahSeeder extends Seeder
         ];
 
         DB::table('matakuliah')->insert($matkul);
-        
     }
 }
